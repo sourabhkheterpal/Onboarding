@@ -1,0 +1,15 @@
+<%= render partial: 'secret_form_modal' %>
+<%= will_paginate @secrets %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Secret Code</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: 'secret', collection: @secrets %>
+  </tbody>
+</table> 
+<%= will_paginate @secrets %>

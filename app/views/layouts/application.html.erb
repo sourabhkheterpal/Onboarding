@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Onboarding</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= nav_bar brand: "Onboarding" do%>
+      <% menu_group pull: :right do %>
+        <% if current_user.is_a?(User) %>
+          <%= menu_item "Log out", destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= menu_item "Register", new_user_registration_path %>
+          <%= menu_item "Login", new_user_session_path %>
+        <% end %>
+      <% end %>
+    <%end%>
+    
+    <div class="paddingLeftDiv">
+      <% if notice %>
+        <div class="alert alert-info"><p class="notice"><%= notice %></p></div>
+      <% end %>
+      <% if alert %>
+        <div class="alert alert-warning"><p class="alert"><%= alert %></p></div>
+      <%end%>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div><%= yield %></div>
+      </div>
+    </div>
+  </body>
+</html>
